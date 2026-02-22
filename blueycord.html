@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlueyCord 🐾</title>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="https://i.ibb.co/YFm6mYQ/Screenshot-20260222-124142-Stone-Story.jpg">
+    
+    <style>
+        body {
+            background-color: #2C2F33; /* Cor escura estilo Discord */
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        /* Splash Screen / Obrigação de Atalho */
+        #shortcut-alert {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .icon-preview {
+            width: 100px;
+            height: 100px;
+            border-radius: 20px;
+            border: 3px solid #7289DA;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #7289DA;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Interface Principal */
+        #main-app { display: none; flex-direction: column; height: 100%; }
+        
+        header { background: #23272A; padding: 15px; display: flex; justify-content: space-between; align-items: center; }
+        
+        .chat-area { flex: 1; padding: 20px; overflow-y: auto; background: #36393F; }
+        
+        .call-button {
+            background: #43B581;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .login-btn { background: #DB4437; } /* Cor do Google */
+    </style>
+</head>
+<body>
+
+    <div id="shortcut-alert">
+        <img src="https://i.ibb.co/YFm6mYQ/Screenshot-20260222-124142-Stone-Story.jpg" class="icon-preview">
+        <h2>BEM-VINDO AO BLUEYCORD!</h2>
+        <p>Para usar como um App de verdade, você <b>DEVE</b>:</p>
+        <p>1. Clicar nos três pontinhos do navegador.<br>
+           2. Selecionar <b>"Adicionar à tela inicial"</b>.</p>
+        <button onclick="entrar()">JÁ ADICIONEI!</button>
+    </div>
+
+    <div id="main-app">
+        <header>
+            <span>BlueyCord - Chat & Call</span>
+            <button class="login-btn" onclick="googleLogin()">Entrar com Google</button>
+        </header>
+
+        <div class="chat-area" id="chat">
+            <p style="color: #8E

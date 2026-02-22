@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contagem Regressiva do Meu Niver!</title>
+    <style>
+        body {
+            background-color: #93D2F3; /* Azul da Bluey! */
+            font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            color: #1B365D;
+            text-align: center;
+        }
+        h1 { font-size: 3rem; margin-bottom: 10px; }
+        #countdown {
+            font-size: 2.5rem;
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 0 #1B365D;
+        }
+        .footer { margin-top: 30px; font-size: 1.2rem; }
+    </style>
+</head>
+<body>
+
+    <h1>Faltam quantos dias? 🐾</h1>
+    <div id="countdown">Carregando...</div>
+    
+    <div class="footer">
+        O aniversário de 12 anos está chegando! <br>
+        <b>28 de Fevereiro de 2026</b>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const now = new Date();
+            const birthday = new Date('2026-02-28T00:00:00');
+            const diff = birthday - now;
+
+            if (diff <= 0) {
+                document.getElementById('countdown').innerHTML = "🎈 É HOJE! FELIZ ANIVERSÁRIO! 🎈";
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown').innerHTML = 
+                `${days}d ${hours}h ${mins}m ${secs}s`;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>

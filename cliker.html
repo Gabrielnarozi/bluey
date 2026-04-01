@@ -1,0 +1,19 @@
+Super Botão Vermelho Clicker body { /* Fundo AMOLED Preto Total */ background-color: #000000; /* Texto Branco para contrastar */ color: #ffffff; /* Aplicando a fonte Minecraft */ font-family: 'Minecraftia', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; user-select: none; /* Impede de selecionar o texto sem querer */ } .conteudo-jogo { text-align: center; display: flex; flex-direction: column; gap: 20px; } h1 { font-size: 36px; margin: 0; text-shadow: 2px 2px #333; /* Sombra estilo Minecraft */ } #placar { font-size: 48px; margin: 10px 0; color: #55FF55; /* Verde limão clássico do Minecraft */ } #botao-clicar { /* Botão Vermelho */ background-color: #aa0000; color: white; border: 6px solid #ff5555; /* Borda mais clara */ padding: 20px 40px; font-size: 24px; cursor: pointer; font-family: 'Minecraftia', sans-serif; /* Efeito de pixel art */ image-rendering: pixelated; text-shadow: 2px 2px #550000; box-shadow: 0 6px #550000; /* Sombra do botão */ transition: all 0.1s; } #botao-clicar:active { /* Efeito ao clicar */ box-shadow: 0 2px #550000; transform: translateY(4px); } .painel-info { font-size: 14px; color: #aaaaaa; } /* Estilo da Lojinha */ .loja { margin-top: 30px; border-top: 2px solid #ffffff; padding-top: 20px; } .item-loja { border: 1px solid #ffffff; padding: 10px; background-color: #111; } .item-loja h3 { margin: 0 0 10px 0; } #comprar-auto { background-color: #555; color: white; border: 2px solid white; cursor: pointer; font-family: 'Minecraftia', sans-serif; padding: 5px 10px; } #comprar-auto:hover { background-color: #777; } #comprar-auto:disabled { background-color: #222; color: #666; border: 2px solid #666; cursor: not-allowed; } 
+
+PONTOS:
+
+0
+
+CLIQUE AQUI 
+
+0 CPS (Cliques por Segundo) 
+
+Clique Automático
+
+Preço: 15 pontos
+
+Adiciona 1 clique por segundo
+
+Comprar 
+
+// Variáveis do Jogo let pontos = 0; let autoClickers = 0; const precoAutoClicker = 15; // Elementos da Tela (DOM) const placarElement = document.getElementById('placar'); const botaoClicar = document.getElementById('botao-clicar'); const comprarAutoBtn = document.getElementById('comprar-auto'); const cpsElement = document.getElementById('cliques-por-segundo'); // Função para atualizar tudo na tela function atualizarTela() { placarElement.innerText = pontos; cpsElement.innerText = autoClickers; // Ativa ou desativa o botão de compra se tiver dinheiro if (pontos >= precoAutoClicker) { comprarAutoBtn.disabled = false; } else { comprarAutoBtn.disabled = true; } } // --- Lógica do Clique Manual --- botaoClicar.addEventListener('click', () => { pontos = pontos + 1; atualizarTela(); }); // --- Lógica da Loja --- comprarAutoBtn.addEventListener('click', () => { if (pontos >= precoAutoClicker) { // Pagar pontos = pontos - precoAutoClicker; // Receber o item autoClickers = autoClickers + 1; // Atualizar atualizarTela(); } }); // --- Lógica do Clique Automático (O Loop) --- // Esse código roda a cada 1 segundo (1000 milissegundos) setInterval(() => { if (autoClickers > 0) { // Adiciona a quantidade de pontos que você tem de auto-clickers pontos = pontos + autoClickers; atualizarTela(); } }, 1000); // Inicializar a tela com os valores zerados atualizarTela(); 
